@@ -12,7 +12,7 @@ export default function help() {
 
             <div className="py-6">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-                    I'm not a community service organization or local business. Can I still recruit volunteers?
+                    I&apos;m not a community service organization or local business. Can I still recruit volunteers?
                 </h2>
                 <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
                     Of course! If you are in need of work that benefits the community or you are physically unable to do a task, then we can help you!
@@ -21,10 +21,10 @@ export default function help() {
 
             <div className="py-6">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-                    I'm not a high school student or I don't live in Blacksburg. Can I still participate in activities?
+                    I&apos;m not a high school student or I don&apos;t live in Blacksburg. Can I still participate in activities?
                 </h2>
                 <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
-                    Yes! Our website is focused on projects in and around Blacksburg, but that doesn't mean that it is reserved for a specific set of residents or students.
+                    Yes! Our website is focused on projects in and around Blacksburg, but that doesn&apos;t mean that it is reserved for a specific set of residents or students.
                 </p>
             </div>
 

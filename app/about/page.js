@@ -8,7 +8,7 @@ export default function About() {
                     About Us
                 </h1>
                 <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
-                We are two highschool students from Blacksburg High School that wished there was an easier way for students to engage in their community. When we thought of community service before, images of food pantries and donating blood were the first and sometimes only ideas that popped into our heads. Of course this isn’t the case, and we want to provide awareness of all volunteer activities around Blacksburg and the New River Valley to newcomers to service. In creating this site, we’ve had a lot of fun finding volunteer options for our own clubs and ourselves. We hope this is a valuable resource for everyone in the future.
+                We are two high school students from Blacksburg High School that wished there was an easier way for students to engage in their community. When we thought of community service before, images of food pantries and donating blood were the first and sometimes only ideas that popped into our heads. Of course this isn’t the case, and we want to provide awareness of all volunteer activities around Blacksburg and the New River Valley to newcomers to service. In creating this site, we’ve had a lot of fun finding volunteer options for our own clubs and ourselves. We hope this is a valuable resource for everyone in the future.
                 </p>
             </div>
 

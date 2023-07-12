@@ -15,7 +15,7 @@ const Navbar = () => {
                 Recruit
             </Link>
 
-            <Link href="/"><Image src={Logo} alt="Logo" className='transition ease-in-out hover:contrast-50 object-scale-down h-10 w-10 ring ring-green-400 rounded-full' /></Link>
+            <Link href="/" passHref><Image href={Logo} alt="Logo" className='transition ease-in-out hover:contrast-50 object-scale-down h-10 w-10 ring ring-green-400 rounded-full' /></Link>
 
             <Link href="/help" className='flex items-center p-2 lg:w-24 xl:w-24 border border-transparent border-5 rounded-lg transition ease-in-out text-center hover:text-blue-400'>
                 Help
