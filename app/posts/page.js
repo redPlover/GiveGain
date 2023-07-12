@@ -10,7 +10,7 @@ const Content = () => {
     return <div>
         {json.map((item, index) => (
         <div key={index} className='bg-green-400 dark:bg-gray-900 dark:bg-opacity-50 snap-center shrink-0 p-5 m-5 text-center flex flex-col origin-center place-items-center rounded border-2 dark:border-sky-200 border-black'>
-            <Image width={500} height={500} alt='Post Image' href={item.image}/>
+            <Image width={500} height={500} alt='Post Image' src={item.image}/>
             <h2 className='text-2xl font-bold'>{item.title}</h2>
             <p className='text-lg font-light max-w-[70ch]'>{item.description}</p>
             <p className='text-lg font-light'>Contact: <a className='underline text-blue-900 dark:text-blue-400' href={item.email}>{item.email}</a></p>
