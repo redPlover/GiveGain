@@ -12,10 +12,19 @@ export default function help() {
 
             <div className="py-6">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-                    I&apos;m not a community service organization or local business. Can I still recruit volunteers?
+                    How do I volunteer?
                 </h2>
                 <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
-                    Of course! If you are in need of work that benefits the community or you are physically unable to do a task, then we can help you!
+                    Volunteering is easy! You can scroll through the closest volunteering opportunities, or you can search for a specific type of activity in the search bar. You can also choose a type of volunteering work. For example: Education or Medical Care. These topics can direct you to those types of work. Additionally, volunteering activities could be recurring like an internship. These activities will be labeled with an example schedule. If you would like to participate in an internship, please contact the organization independently through the communication links on our site. Some of these activities also require certain expertise which involves training. Be sure that you are qualified for these jobs or intend to get qualified soon. Depending on the qualifications, they might be offered by the organization who needs help. Without further ado, go out and have fun!
+                </p>
+            </div>
+
+            <div className="py-6">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+                    How do I recruit volunteers?
+                </h2>
+                <p className="mt-4 text-lg text-gray-500 dark:text-gray-300">
+                    Welcome prospective users! We promote community service in our schools by making it extremely efficient for volunteers to see and sign up for activities, jobs, or internships. We do this through a post system. Organizations can customize their posts with images and text explanations that volunteers can scroll through. First, you will need to create an account for your activities to be posted under. This can include pictures, mission statements, location, social media, contact information, and much more! Click create an account to continue.
                 </p>
             </div>
 

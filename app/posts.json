@@ -1,11 +1,13 @@
 [
     {
+        "id": "1",
         "image": "/images/1.jpg",
         "title": "Dog Walking",
         "description": "Walk dogs for 30 minutes and feed them afterwards. 2 dogs, 1 pug and 1 labrador. They are very friendly and love to play.",
         "email": "volunteer@pet.org"
     },
     {
+        "id": "2",
         "image": "/images/2.jpg",
         "title": "Food Pantry",
         "description": "Help us sort food and distribute it to the homeless. We are a non-profit organization that helps the homeless in the area. We are looking for volunteers to help us sort food and distribute it to the homeless. We are a non-profit organization that helps the homeless in the area. We are looking for volunteers to help us sort food and distribute it to the homeless. We are a non-profit organization that helps the homeless in the area. We are looking for volunteers to help us sort food and distribute it to the homeless. We are a non-profit organization that helps the homeless in the area. We are looking for volunteers to help us sort food and distribute it to the homeless. We are a non-profit organization that helps the homeless in the area. We are looking for volunteers to help us sort food and distribute it to the homeless. We are a non-profit organization that helps the homeless in the area.",
