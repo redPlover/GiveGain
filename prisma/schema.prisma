@@ -8,25 +8,28 @@ datasource db {
 }
 
 model login {
-  id          Int   @id @default(autoincrement())
+  id          String   @default(cuid()) @id
   createdAt   DateTime @default(now())
   username    String?  @unique
   email       String?  @unique
+  name        String?  @unique
   password    String?
   icon        Bytes?
+  description String?
 }
 
 model post {
-  id        Int      @id @default(autoincrement())
+  id        String   @default(cuid()) @id
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   visible   Boolean?
   lapse     Int?
   duration  Int?
-  title     String   @db.VarChar(255)
+  images    Bytes[]
+  title     String?
   location  String?
   content   String?
-  banner    Bytes?
   emails    String[]
-  authorId  Int?
+  authorId  String?
+  tags      String[]
 }
