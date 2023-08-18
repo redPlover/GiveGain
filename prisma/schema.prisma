@@ -10,45 +10,47 @@ datasource db {
 model login {
   id          String   @default(cuid()) @id
   createdAt   DateTime @default(now())
-  username    String?  @unique
-  email       String?  @unique
-  name        String?  @unique
-  password    String?
+  username    String   @unique
+  email       String   @unique
+  name        String   @unique
+  password    String
   icon        Bytes?
   description String?
+  posts       post[]
 }
 
 model request {
   id        String   @default(cuid()) @id
   createdAt DateTime @default(now())
   username  String?  @unique
-  email     String?  @unique
+  email     String   @unique
   name      String?  @unique
-  password  String?
+  password  String
 }
 
 model post {
   id        String   @default(cuid()) @id
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  visible   Boolean?
+  visible   Boolean  @default(true)
   lapse     Int?
   duration  Int?
   images    Bytes[]
-  title     String?
+  title     String
   location  String?
   content   String?
   emails    String[]
-  authorId  String?
+  user      login    @relation(fields: [authorId], references: [id])
+  authorId  String
   tags      String[]
   max       Int?
 }
 
 model report {
-  id        String   @default(cuid()) @id
+  id        Int   @default(autoincrement()) @id
   createdAt DateTime @default(now())
-  email     String?
-  title     String?
+  email     String
+  title     String
   content   String?
   type      String?
 }

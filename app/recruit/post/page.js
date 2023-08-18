@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
 
 export default function form() {
 
@@ -42,10 +43,30 @@ export default function form() {
         console.log("doodaa");
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        test();
-        setPosted(true);
+        try {
+            test();
+            setPosted(true);
+            let data = JSON.stringify({
+                title: title,
+                content: content,
+                location: location,
+                duration: duration,
+                lapse: lapse,
+                visible: visible,
+                tags: tags,
+                max: max,
+                authorId: "cllay4cr70000o6983v7c8os5"
+            });
+            const res = await fetch(`/api/posts`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data }) });
+            if (!res.ok) {
+                console.error(res.status);
+            }
+            return res.data;
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     if (!posted) {
@@ -86,24 +107,23 @@ export default function form() {
                         required
                     ></textarea>
                 </div>
-                {/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
                 <div className="mb-6">
                     <label
                         className="block text-gray-700 text-sm font-bold mb-2"
                         htmlFor="tags"
                     >
-                        Tags
+                        Tags (ie. "outdoors", "social", "animal")
                     </label>
                     {tags.map((tag, index) => (
                         <div key={index} className="flex items-center mb-2">
                             <input
                                 type="text"
-                                value={tag.index}
+                                value={tag}
                                 onChange={(event) => handleTagChange(event, index)}
                                 placeholder="Enter a tag"
                                 className="border border-gray-300 text-black rounded-md px-3 py-2 mr-2"
                             />
-                            <button onClick={() => handleDeleteTag(tag.index)} type="button" className="bg-red-500 hover:bg-red-700 text-white px-3 py-2 rounded-md">
+                            <button onClick={() => handleDeleteTag(index)} type="button" className="bg-red-500 hover:bg-red-700 text-white px-3 py-2 rounded-md">
                                 Delete
                             </button>
                         </div>
@@ -112,7 +132,6 @@ export default function form() {
                         Add Tag
                     </button>
                 </div>
-                {/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */}
                 <div className="mb-6">
                     <label
                         className="block text-gray-700 text-sm font-bold mb-2"
