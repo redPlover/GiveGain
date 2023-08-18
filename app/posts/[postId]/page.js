@@ -1,9 +1,3 @@
-import json from '../../posts.json';
-import Image from 'next/image';
-import Link from 'next/link';
-import prisma from '../../lib/prisma';
-import { GetServerSideProps } from 'next';
-
 export const dynamic = 'force-dynamic';
 
 async function getPosts() {
@@ -28,7 +22,7 @@ export default async function Page({ params }) {
                 <p className='text-lg font-light max-w-[70ch]'>Lapse: {item.lapse}</p>
                 {!item.tags == [] ? <p className='text-lg font-light max-w-[70ch]'>Tags: {item.tags}</p> : null}
                 <p className='text-lg font-light max-w-[70ch]'>Max: {item.max}</p>
-                <p className='text-lg font-light max-w-[70ch]'>Author: {item.authorId}</p>
+                <p className='text-lg font-light max-w-[70ch]'>Author: {item.user.name}</p>
             </div>
         ))}
     </div>);

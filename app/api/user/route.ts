@@ -3,9 +3,19 @@ import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
     console.log(request.url);
-    const user = await prisma.login.findUnique({
-        where: {
-            id: "cllay4cr70000o6983v7c8os5"
+    const user = await prisma.login.findMany({
+        select: {
+            id: true,
+            username: true,
+            name: true,
+            description: true,
+            posts: {
+                select: {
+                    id: true,
+                    title: true,
+                    content: true
+                }
+            }
         }
     });
     return NextResponse.json(user);

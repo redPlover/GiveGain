@@ -15,20 +15,35 @@ export async function GET(request: Request) {
             content: true,
             images: true,
             location: true,
-            authorId: true
+            authorId: true,
+            user: {
+                select: {
+                    name: true,
+                    username: true
+                }
+            }
         }
     });
     return NextResponse.json(posts);
 }
 
 export async function POST(request: Request) {
-    console.log(request.url);
     try {
-        console.log(request.body);
         const json = await request.json();
+        console.log(json);
 
         const user = await prisma.post.create({
-            data: json,
+            data: {
+                title: json.title,
+                content: json.content,
+                location: json.location,
+                duration: json.duration,
+                lapse: json.lapse,
+                visible: json.visible,
+                tags: json.tags,
+                max: json.max,
+                authorId: json.authorId
+            }
         });
 
         return new NextResponse(JSON.stringify(user), {

@@ -15,14 +15,6 @@ async function getPosts() {
     return res.json();
 }
 
-async function getUser() {
-    const res = await fetch(`${process.env.BASE_URL}/api/user`, { headers: { 'Content-Type': 'application/json' } }, { cache: "no-store" });
-    if (!res.ok) {
-        console.error(res.status);
-    }
-    return res.json();
-}
-
 const Content = () => {
     return <div>
         {json.map((item, index) => (
@@ -37,12 +29,7 @@ const Content = () => {
 
 export default async function bulletin() {
     const data = await getPosts();
-    const user = await getUser();
-    // async function user(id) {
-    //     const data = await getUser(id);
-    //     return data;
-    // }
-
+    
     return (
         // <Content/>
         <div className='flex flex-col origin-center place-items-center snap-mandatory snap-y'>
@@ -57,7 +44,7 @@ export default async function bulletin() {
                         <p className='text-lg font-light max-w-[70ch]'>Lapse: {item.lapse}</p>
                         {!item.tags == [] ? <p className='text-lg font-light max-w-[70ch]'>Tags: {item.tags}</p> : null}
                         <p className='text-lg font-light max-w-[70ch]'>Max: {item.max}</p>
-                        <p className='text-lg font-light max-w-[70ch]'>Author: {user.name}</p>
+                        <Link className='text-lg font-light underline text-blue-900 dark:text-blue-400' href={"/posts/user/"+item.user.username}>Author: {item.user.name}</Link>
                     </div></Link>))}
             </div>
         </div>
