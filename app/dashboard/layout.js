@@ -3,11 +3,12 @@ import '../globals.css'
 import '../navbar.css'
 
 export const metadata = {
-    title: 'Posts - GiveGain',
-    description: 'Posts on GiveGain',
+    title: 'Recruit - GiveGain',
+    description: 'Recruitment page for GiveGain',
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+
     return (
         <html lang="en">
             <body>

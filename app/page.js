@@ -32,7 +32,7 @@ export default function Home() {
                 </a>
 
                 <a
-                    href="/recruit"
+                    href="/dashboard"
                     className="group rounded-lg border border-transparent p-5 ease-in-out hover:shadow-lg dark:hover:shadow-black/30 transition-colors hover:border-blue-500 hover:bg-green-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
                     rel="noopener noreferrer"
                 >

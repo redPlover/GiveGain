@@ -20,7 +20,7 @@ export default async function Page({ params }) {
                 <p className='text-lg font-light max-w-[70ch]'>Location: {item.location}</p>
                 <p className='text-lg font-light max-w-[70ch]'>Duration: {item.duration}</p>
                 <p className='text-lg font-light max-w-[70ch]'>Lapse: {item.lapse}</p>
-                {!item.tags == [] ? <p className='text-lg font-light max-w-[70ch]'>Tags: {item.tags}</p> : null}
+                {!item.tags == [] ? <p className='text-lg font-light max-w-[70ch]'>Tags: {item.tags.map((item) => (<p>{item}</p>))}</p> : null}
                 <p className='text-lg font-light max-w-[70ch]'>Max: {item.max}</p>
                 <p className='text-lg font-light max-w-[70ch]'>Author: {item.user.name}</p>
             </div>

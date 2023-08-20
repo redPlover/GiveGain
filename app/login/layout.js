@@ -1,14 +1,14 @@
-import Navbar from '../components/header.js';
 import '../globals.css'
-import '../navbar.css'
+
+export const metadata = {
+    title: 'Login - GiveGain',
+    description: 'Login page for GiveGain',
+}
 
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-
-                <Navbar />
-
                 {children}
             </body>
         </html>

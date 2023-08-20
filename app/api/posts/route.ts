@@ -16,6 +16,7 @@ export async function GET(request: Request) {
             images: true,
             location: true,
             authorId: true,
+            tags: true,
             user: {
                 select: {
                     name: true,
@@ -29,8 +30,9 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
     try {
-        const json = await request.json();
+        const json = JSON.parse(await request.text()).data;
         console.log(json);
+        console.log(JSON.stringify(json.title));
 
         const user = await prisma.post.create({
             data: {
@@ -52,7 +54,7 @@ export async function POST(request: Request) {
         });
     } catch (error: any) {
         if (error.code === "P2002") {
-            return new NextResponse("User with email already exists", {
+            return new NextResponse("Error code P2002: Please contact website admin", {
                 status: 409,
             });
         }

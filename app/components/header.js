@@ -11,7 +11,7 @@ const Navbar = () => {
             <Link href="/posts" className='flex items-center p-2 lg:w-24 xl:w-24 border border-transparent border-5 rounded-lg transition ease-in-out text-center hover:text-blue-400'>
                 Volunteer
             </Link>
-            <Link href="/recruit" className='flex items-center p-2 lg:w-24 xl:w-24 border border-transparent border-5 rounded-lg transition ease-in-out text-center hover:text-blue-400'>
+            <Link href="/dashboard" className='flex items-center p-2 lg:w-24 xl:w-24 border border-transparent border-5 rounded-lg transition ease-in-out text-center hover:text-blue-400'>
                 Recruit
             </Link>
 

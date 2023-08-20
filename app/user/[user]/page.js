@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export const dynamic = 'force-dynamic';
 
 async function getUsers() {
@@ -18,7 +20,7 @@ export default async function Page({ params }) {
                 <h2 className='text-2xl font-bold'>{item.name}</h2>
                 <p className='text-lg font-light max-w-[70ch]'>{item.description}</p>
                 {item.posts.map((item, index) => (
-                    <div key={index} className='snap-center shrink-0 p-2 text-center dark:text-white flex flex-col origin-center place-items-center'>{item.title}</div>
+                    <Link key={index} href={"/posts/"+item.id} className='snap-center shrink-0 p-2 text-center dark:text-white flex flex-col origin-center place-items-center'>{item.title}</Link>
                 ))}
             </div>
         ))}

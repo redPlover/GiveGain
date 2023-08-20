@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
+
+export const dynamic = 'force-dynamic';
 
 export default function form() {
 
@@ -48,7 +49,7 @@ export default function form() {
         try {
             test();
             setPosted(true);
-            let data = JSON.stringify({
+            let data = {
                 title: title,
                 content: content,
                 location: location,
@@ -58,10 +59,11 @@ export default function form() {
                 tags: tags,
                 max: max,
                 authorId: "cllay4cr70000o6983v7c8os5"
-            });
+            };
             const res = await fetch(`/api/posts`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data }) });
             if (!res.ok) {
                 console.error(res.status);
+                console.log(res.statusText);
             }
             return res.data;
         } catch (error) {
