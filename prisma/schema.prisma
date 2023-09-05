@@ -8,7 +8,7 @@ datasource db {
 }
 
 model login {
-  id          String   @default(cuid()) @id
+  id          String   @id @default(cuid())
   createdAt   DateTime @default(now())
   username    String   @unique
   email       String   @unique
@@ -20,7 +20,7 @@ model login {
 }
 
 model request {
-  id        String   @default(cuid()) @id
+  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   username  String?  @unique
   email     String   @unique
@@ -29,25 +29,24 @@ model request {
 }
 
 model post {
-  id        String   @default(cuid()) @id
+  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   visible   Boolean  @default(true)
-  lapse     Int?
-  duration  Int?
+  time      DateTime?
   images    Bytes[]
   title     String
   location  String?
   content   String?
   emails    String[]
-  user      login    @relation(fields: [authorId], references: [id])
   authorId  String
   tags      String[]
   max       Int?
+  user      login    @relation(fields: [authorId], references: [id])
 }
 
 model report {
-  id        Int   @default(autoincrement()) @id
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   email     String
   title     String

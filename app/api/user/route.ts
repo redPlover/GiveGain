@@ -2,7 +2,6 @@ import prisma from "../../lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
-    console.log(request.url);
     const user = await prisma.login.findMany({
         select: {
             id: true,

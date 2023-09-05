@@ -2,7 +2,7 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "../../../lib/prisma";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from 'next/navigation';
 
 export const authOptions = {
     adapter: PrismaAdapter(prisma),
@@ -17,18 +17,34 @@ export const authOptions = {
                 password: { label: "Password", type: "password", placeholder: "********" }
             },
             async authorize(credentials) {
-                const user = {
-                    id: 1,
-                    username: "E",
-                    password: "e"
-                };
+                const user = await prisma.login.findFirst({
+                    where: {
+                        username: credentials.username
+                    }
+                });
+
+                if (!user) {
+                    return null;
+                }
+
+                if (user.password !== credentials.password) {
+                    return null;
+                }
+
                 return user;
             }
         })
     ],
-    events: {
-        async signIn(message) {
-            redirect("/dashboard");
+    callbacks: {
+        async session({ session, user, token }) {
+            session.user = user;
+            return session;
+        },
+        async redirect(url, baseUrl) {
+            return "/dashboard";
+        },
+        async jwt({ token, user }) {
+            return token;
         }
     },
     secret: process.env.NEXTAUTH_SECRET,
@@ -36,4 +52,4 @@ export const authOptions = {
 };
 
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST};
+export { handler as GET, handler as POST };

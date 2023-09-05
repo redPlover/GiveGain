@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET(request: Request) {
     const posts = await prisma.post.findMany({
         orderBy: {
-            updatedAt: 'desc'
+            time: 'desc'
         },
         where: {
             visible: true
@@ -15,6 +15,7 @@ export async function GET(request: Request) {
             content: true,
             images: true,
             location: true,
+            time: true,
             authorId: true,
             tags: true,
             user: {
@@ -31,21 +32,19 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
     try {
         const json = JSON.parse(await request.text()).data;
-        console.log(json);
-        console.log(JSON.stringify(json.title));
+        const data = {
+            title: json.title,
+            content: json.content,
+            location: json.location,
+            time: json.time+':00.000Z',
+            visible: json.visible,
+            tags: json.tags,
+            max: json.max,
+            authorId: json.authorId
+        }
 
         const user = await prisma.post.create({
-            data: {
-                title: json.title,
-                content: json.content,
-                location: json.location,
-                duration: json.duration,
-                lapse: json.lapse,
-                visible: json.visible,
-                tags: json.tags,
-                max: json.max,
-                authorId: json.authorId
-            }
+            data: data
         });
 
         return new NextResponse(JSON.stringify(user), {

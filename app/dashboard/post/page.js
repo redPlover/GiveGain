@@ -1,5 +1,9 @@
 "use client";
 
+import { useSession } from "next-auth/react"
+
+import { redirect } from 'next/navigation';
+
 import { useState } from 'react';
 import Link from 'next/link';
 
@@ -7,11 +11,14 @@ export const dynamic = 'force-dynamic';
 
 export default function form() {
 
+    const { data: session, status } = useSession();
+
+    if(status === 'unauthenticated') redirect('/api/auth/signin');
+
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [location, setLocation] = useState('');
-    const [duration, setDuration] = useState(0);
-    const [lapse, setLapse] = useState(0);
+    const [time, setTime] = useState('');
     const [visible, setVisible] = useState(true);
     const [tags, setTags] = useState([]);
     const [max, setMax] = useState(1);
@@ -20,7 +27,6 @@ export default function form() {
 
     const toggleSwitch = () => {
         setVisible(!visible);
-        console.log("hi");
     };
 
     const handleTagChange = (event, index) => {
@@ -39,22 +45,15 @@ export default function form() {
         setTags(newTags);
     };
 
-    const test = () => {
-        console.log({ title, content, location, duration, lapse, visible, tags, max });
-        console.log("doodaa");
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            test();
             setPosted(true);
             let data = {
                 title: title,
                 content: content,
                 location: location,
-                duration: duration,
-                lapse: lapse,
+                time: time,
                 visible: visible,
                 tags: tags,
                 max: max,
@@ -154,37 +153,16 @@ export default function form() {
                 <div className="mb-6">
                     <label
                         className="block text-gray-700 text-sm font-bold mb-2"
-                        htmlFor="duration"
+                        htmlFor="time"
                     >
-                        Duration of post in days (Usually the day before the event)
+                        When is the event?
                     </label>
                     <input
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="duration"
-                        name="duration"
-                        type="number"
-                        min="0"
-                        step="1"
-                        value={duration} onChange={(e) => setDuration(e.target.value)}
-                        placeholder=""
-                        required
-                    />
-                </div>
-                <div className="mb-6">
-                    <label
-                        className="block text-gray-700 text-sm font-bold mb-2"
-                        htmlFor="lapse"
-                    >
-                        How many times do you want this post to repost? (The duration will reset after each repost)
-                    </label>
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="lapse"
-                        name="lapse"
-                        type="number"
-                        min="0"
-                        step="1"
-                        value={lapse} onChange={(e) => setLapse(e.target.value)}
+                        id="time"
+                        name="time"
+                        type="datetime-local"
+                        value={time} onChange={(e) => setTime(e.target.value)}
                         placeholder=""
                         required
                     />

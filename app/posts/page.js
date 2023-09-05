@@ -40,8 +40,7 @@ export default async function bulletin() {
                         <h2 className='text-2xl font-bold'>{item.title}</h2>
                         <p className='text-lg font-light max-w-[70ch]'>{item.content}</p>
                         <p className='text-lg font-light max-w-[70ch]'>Location: {item.location}</p>
-                        <p className='text-lg font-light max-w-[70ch]'>Duration: {item.duration}</p>
-                        <p className='text-lg font-light max-w-[70ch]'>Lapse: {item.lapse}</p>
+                        <time className='text-lg font-light max-w-[70ch]'>{item.time}</time>
                         {!item.tags == [] ? <p className='text-lg font-light max-w-[70ch]'>Tags: {item.tags.map((item) => (<p>{item}</p>))}</p> : null}
                         <p className='text-lg font-light max-w-[70ch]'>Max: {item.max}</p>
                         <Link className='text-lg font-light underline text-blue-900 dark:text-blue-400' href={"/user/"+item.user.username}>Author: {item.user.name}</Link>
